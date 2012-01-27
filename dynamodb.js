@@ -1,7 +1,7 @@
 // You can read your credentials from a local file.
 var credentials = {
-  AccessKeyId : "access key id",
-  SecretKey   : "secret key"
+  AccessKeyId : "AKIAJB4FODE7SURD6ZAA",
+  SecretKey   : "26cTzYdggkbxbW6yl4sW4IdkJbQ4zuYCrmc0Ayhx"
 };
 var dynamoDB = require('dynamoDB')
 
