@@ -12,4 +12,5 @@
     , "cookie-sessions": ">= 0.0.2"
     , "connect": ">= 1.8.5"
   }
+  , "scripts": { "start": "app.js" }
 }
