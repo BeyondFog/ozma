@@ -205,7 +205,8 @@ app.get('/', routes.index);
 app.post('/account/settings', routes.account_post);
 app.get('/account/settings', routes.account_get);
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
+app.listen(port);
 var sio = io.listen(app);
 
 var parseCookie = require('connect').utils.parseCookie;
