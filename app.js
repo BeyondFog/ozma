@@ -19,6 +19,8 @@ var session_store;
 
 var session_secret = "d41d8cd98f00b204e9800998ecf8427e";
 
+var parseCookie = require('connect').utils.parseCookie;
+
 function find_user(uid, callback) {
   if (use_user_cache && user_cache[uid] !== undefined) {
     console.log("caching dynamodb lookup for userid: " + uid);
@@ -205,10 +207,16 @@ app.get('/', routes.index);
 app.post('/account/settings', routes.account_post);
 app.get('/account/settings', routes.account_get);
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
+app.listen(port);
 var sio = io.listen(app);
 
-var parseCookie = require('connect').utils.parseCookie;
+
+// For Heroku
+sio.configure(function () { 
+  sio.set("transports", ["xhr-polling"]); 
+  sio.set("polling duration", 10); 
+});
 
 sio.set('authorization', function(data, accept) {
   if (data.headers.cookie) {
