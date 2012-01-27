@@ -263,8 +263,19 @@ sio.sockets.on('connection', function(socket) {
               }
             });
           });
-
-
+          break;
+        case "GET_ITEM":
+          udb.getItem({TableName:data.table
+            , Key:{HashKeyElement:{"S":data.key},RangeKeyElement:{"S":data.range}}
+            , AttributesToGet:data.attrs
+            , ConsistentRead: true
+            }
+          , function(response, result) {
+              result.on('ready', function(data) {
+                socket.emit('response', {msg:"results: " + data.Item});
+              })
+           });
+          break;
       }
     });
   });
