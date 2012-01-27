@@ -1,0 +1,31 @@
+!!! 5
+html
+
+head
+  include bootstrap
+
+div.topbar
+  div.fill
+    div.container
+      a(href='#').brand #{title}
+      ul.nav
+        li.active
+          a(href='#') Home
+        li
+          a(href='#') About
+        li
+          a(href='#') Contact
+
+div.container
+  div.content
+    div.page-header
+      h1 #{title}
+        small text
+    div.row
+      div.span10
+        body!=body
+      div.span4
+
+
+  footer
+    p Copyright &copy; BeyondFog 2012

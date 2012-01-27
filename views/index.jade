@@ -1,0 +1,53 @@
+h1= title
+
+- if (everyauth.user === undefined)
+  p Hi, anonymous! You should 
+    a(href='/register') register 
+    \or 
+    a(href='/login') login.
+- else
+  p Hi, #{everyauth.user.id}
+  - if (!everyauth.user.aws_access_key_id || !everyauth.user.aws_secret_access_key)
+    h3 You don't seem to have set your AWS access credentials.
+  form(action='/account/settings', method='post')
+    div.clearfix
+      label(for='aws_aki') Access Key Id
+      div.input
+        input#aws_aki.xlarge(type='text', name='aws_aki', value=everyauth.user.aws_access_key_id)
+    div.clearfix
+      label(for='aws_sak') Secret Access Key
+      div.input
+        input#aws_sak.xlarge(type='text', name='aws_sak', value=everyauth.user.aws_secret_access_key)
+    div.actions
+      input.btn.primary(type='submit', value="Set")
+
+  style(type='text/css', media='screen')
+      div.console { word-wrap: break-word; }
+      div.console { font-size: 14px }
+      div.console div.jquery-console-inner
+       { width:900px; height:200px; background:#333; padding:0.5em;
+         overflow:auto }
+      div.console div.jquery-console-prompt-box
+       { color:#fff; font-family:monospace; }
+      div.console div.jquery-console-focus span.jquery-console-cursor
+       { background:#fefefe; color:#333; font-weight:bold }
+      div.console div.jquery-console-message-error
+       { color:#ef0505; font-family:sans-serif; font-weight:bold;
+         padding:0.1em; }
+      div.console div.jquery-console-message-type
+       { color:#52666f; font-family:monospace;
+         padding:0.1em; }
+      div.console span.jquery-console-prompt-label { font-weight:bold }
+      div.console div.jquery-console-message-success
+       { color:#187718; font-family:monospace;
+         padding:0.1em; }
+      div.console div.jquery-console-welcome
+       { color:#fff; font-family:monospace;
+         padding:0.1em; }
+      div.console div.jquery-console-message
+       { color:#187718; font-family:monospace;
+         padding:0.1em; }
+  div.console
+  script(src='/javascripts/jquery.console.js')
+  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/dbconsole.js')

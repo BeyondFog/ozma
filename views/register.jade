@@ -1,0 +1,14 @@
+h2 Register
+- if ('undefined' !== typeof errors && errors.length)
+  ul#errors
+    - each error in errors
+      li.error= error
+form(action='/register', method='POST')
+  #email
+    label(for=everyauth.password.emailFormFieldName) Email
+    input(type='text', name='email', value=userParams['email'])
+  #password
+    label(for=everyauth.password.passwordFormFieldName) Password
+    input(type='password', name=everyauth.password.passwordFormFieldName)
+  #submit
+    input(type='submit') Register
