@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost');
+var socket = io.connect();
 var allowed_commands = ["list", "get", "update", "put", "delete", "scan", "query"];
 var tconsole = $('.console').console({
    promptLabel: 'DynamoDB> ',
