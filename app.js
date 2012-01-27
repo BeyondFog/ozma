@@ -207,6 +207,11 @@ app.get('/account/settings', routes.account_get);
 
 var port = process.env.PORT || 3000;
 app.listen(port);
+// For Heroku
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 var sio = io.listen(app);
 
 var parseCookie = require('connect').utils.parseCookie;
