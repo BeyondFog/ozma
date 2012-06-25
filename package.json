@@ -14,4 +14,7 @@
     , "openid":"== 0.3.2"
   }
   , "scripts": { "start": "app.js" }
+  , "engines": {
+    "node":"== 0.8.0"
+  }
 }
